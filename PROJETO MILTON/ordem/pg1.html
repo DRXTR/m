@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      img{
+        filter: invert(1);
+      }
+
+      .byline {
+    color: gold; /* Altera a cor do texto para dourado */
+    text-shadow: 0 0 5px #ffff00, 0 0 10px #ffff00, 0 0 15px #ffaa00, 0 0 20px #ffaa00, 0 0 30px #ffaa00; /* Cria um efeito de brilho */
+    animation: glow 2s ease-in-out infinite alternate; /* Adiciona uma animação de brilho */
+  }
+
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 5px #ffff00, 0 0 10px #ffff00, 0 0 15px #ffaa00, 0 0 20px #ffaa00, 0 0 30px #ffaa00;
+    }
+    to {
+      text-shadow: 0 0 20px #ffff00, 0 0 30px #ffff00, 0 0 40px #ffaa00, 0 0 50px #ffaa00, 0 0 60px #ffaa00;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="starwars-demo">
+        <!-- <img src="guitarhero.png" alt="Star" class="star"> -->
+        <!-- <img src="guitarhero.png" alt="Wars" class="wars"> -->
+        <h2 class="byline" id="byline">Adivinhe A Musica </h2>
+      </div>
+      
+      <style>
+        /* Animation properties */
+.star {
+  animation: star 10s ease-out;
+}
+.wars {
+  animation: wars 10s ease-out;
+}
+.byline span {
+  animation: spin-letters 10s linear ;
+}
+.byline {
+  animation: move-byline 10s linear ;
+}
+.byline:animation-finish{
+  display: none;
+}
+/* Keyframes */
+@keyframes star {
+  0% {
+    opacity: 0;
+    transform: scale(1.5) translateY(-0.75em);
+  }
+  20% {
+    opacity: 1;
+  }
+  89% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateZ(-1000em);
+  }
+}
+
+@keyframes wars {
+  0% {
+    opacity: 0;
+    transform: scale(1.5) translateY(0.5em);
+  }
+  20% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateZ(-1000em);
+  }
+}
+
+@keyframes spin-letters {
+  0%, 10% {
+    opacity: 0;
+    transform: rotateY(90deg);
+  }
+  30%, 90% {
+    opacity: 1;
+    transform: rotateY(0);
+  }100% {
+    opacity: 0;
+  }
+}
+
+@keyframes move-byline {
+  0% {
+    transform: translateZ(5em);
+    opacity: 1;
+  }
+  90%{
+    transform: translateZ(0);
+    opacity: 1;
+  }100% {
+    transform: translateZ(0);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Make the 3D work on the container */
+.starwars-demo {
+  perspective: 800px;
+  transform-style: preserve3d;
+}
+
+/* General styles and layout */
+body {
+  background: #000 ;
+}
+
+.starwars-demo {
+  height: 17em;
+  left: 50%;
+  position: absolute;
+  top: 53%;
+  transform: translate(-50%, -50%);
+  width: 34em;
+}
+
+.byline span {
+  display: inline-block;
+}
+
+img {
+  width: 100%;
+}
+
+.star, .wars, .byline {
+  position: absolute;
+}
+
+.star {
+  top: -0.75em;
+}
+
+.wars {
+  bottom: -0.5em;
+}
+
+.byline {
+  color: #fff;
+  font-family: "ITC Serif Gothic", Lato;
+  font-size: 2.25em;
+  left: -2em;
+  letter-spacing: 0.4em;
+  right: -2em;
+  text-align: center;
+  text-transform: uppercase;
+  top: 29%;
+}
+
+
+.container {
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center {
+  width: 180px;
+  height: 60px;
+  position: absolute;
+}
+
+.btn {
+  width: 180px;
+  height: 60px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid white;
+  outline: none;
+  transition: 1s ease-in-out;
+  /* outras propriedades... */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0; /* torna o botão inicialmente invisível */
+  animation: aparecer 2s 10s forwards; /* aplica a animação com um atraso de 10s */
+}
+
+svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  fill: none;
+  stroke: gold;
+  stroke-dasharray: 150 480;
+  stroke-dashoffset: 150;
+  transition: 1s ease-in-out;
+}
+
+.btn:hover {
+  transition: 1s ease-in-out;
+  background: transparent;
+}
+
+.btn:hover svg {
+  stroke-dashoffset: -480;
+}
+
+.btn span {
+  color: white;
+  font-size: 18px;
+  font-weight: 100;
+}
+
+.animated-button:hover {
+  font-size: 24px;
+}
+
+/* Pseudo-elemento para a borda dourada */
+
+
+/* Animação para a borda dourada */
+@keyframes border-dance {
+    0% {background-size: 100% auto, auto auto, auto auto, auto auto;}
+    25% {background-size: auto 100%, auto auto, auto auto, auto auto;}
+    50% {background-size: auto auto, 100% auto, auto auto, auto auto;}
+    75% {background-size: auto auto, auto auto, auto 100%, auto auto;}
+    100% {background-size: auto auto, auto auto, auto auto, 100%;}
+}
+
+
+@media only screen and (max-width: 600px) {
+  .starwars-demo {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .starwars-demo {
+    font-size: 7px;
+  }
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0; /* torna o botão inicialmente invisível */
+    transform: translate(-50%, -50%) scale(0); /* começa com o botão pequeno */
+  }
+  to {
+    opacity: 1; /* torna o botão visível */
+    transform: translate(-50%, -50%) scale(1); /* termina com o botão no tamanho original */
+  }
+}
+
+
+
+
+
+      </style>
+
+      <script>
+        var byline = document.getElementById('byline');   // Find the H2
+bylineText = byline.innerHTML;                    // Get the content of the H2
+bylineArr = bylineText.split('');                 // Split content into array
+byline.innerHTML = '';                            // Empty current content
+
+var span;         // Create variables to create elements
+var letter;
+
+for(i=0;i<bylineArr.length;i++){                  // Loop for every letter
+  span = document.createElement("span");          // Create a <span> element
+  letter = document.createTextNode(bylineArr[i]); // Create the letter
+  if(bylineArr[i] == ' ') {                       // If the letter is a space...
+    byline.appendChild(letter);         // ...Add the space without a span
+  } else {
+    span.appendChild(letter);           // Add the letter to the span
+    byline.appendChild(span);           // Add the span to the h2
+  }
+}
+
+document.querySelector('.byline').addEventListener('animationend', function() {
+  this.style.display = 'none';
+});
+
+
+      </script>
+
+
+<div class="container">
+  <div class="center">
+    <a href="pg2.html">
+    <button class="btn">
+      <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+        <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+        <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+      </svg>
+      <span>COMEÇAR</span>
+    </button>
+  </a>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #000;
+        }
+
+        .lista {
+            display: block;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .lista li {
+            margin: 10px 0;
+            width: max-content;
+        }
+
+        .lista li a{
+            display: inline-block;
+            margin: 10px 0;
+            font-size: 2rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #fff;
+            letter-spacing: .1rem;
+        }
+
+        .lista .cursor{
+            position: fixed;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+    transition: all 0.3s ease; /* Adicione esta linha */
+        }
+
+        .lista li:hover ~ .cursor{
+            transform:translate(-50%, -50%) scale(4);
+            background: #000;
+            box-shadow: 0 0 0 100vh #fff;
+        }
+
+        .rains-container{
+            width: 50%;
+            height: 50%;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .rains-container .rain{
+            width: 5px;
+            height: 5px;
+            border-radius: 50px;
+            
+             /* Adicionei a propriedade mix-blend-mode */
+             background-color:white; 
+             mix-blend-mode:difference; 
+         }
+        
+         /* Adicionei a propriedade mix-blend-mode */
+         .drop {
+             position:absolute; 
+             bottom:100%; 
+             background-color:#FFF; 
+             width:2px; 
+             height:5px; 
+             animation:
+                 fall linear infinite;
+
+             /* A cor inicial da gota */
+             background-color:#FFF;
+
+             /* Adicionei a propriedade mix-blend-mode */
+             mix-blend-mode:difference; 
+         }
+         @keyframes fall {
+             to {
+                 transform: translateY(100vh);
+             }
+         }
+    </style>
+</head>
+<body>
+    
+    <ul class="lista">
+        <li><a href="#">Escolha Um Tema</a></li>
+        <br>
+        <br>
+        
+        <li><a href="sertanejo.html">SERTANEJO</a></li>
+        <li><a class="" href="trap.html">TRAP</a></li>
+        <li><a href="rock.html">ROCK</a></li>
+        <div class="cursor"></div>
+    </ul>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script> <!-- Adicione isso para usar a biblioteca anime.js -->
+    <script>
+        let cursor = document.querySelector('.cursor');
+        
+        document.addEventListener('mousemove', (event) => {
+          cursor.style.left = event.pageX +'px';
+          cursor.style.top = event.pageY +'px';
+        })
+
+        
+    </script>
+
+   <script>
+    for(let i = 0; i < 100; i++) {
+          let drop = document.createElement('div');
+           drop.className = 'drop'; 
+           drop.style.left = `${Math.random() * 100}vw`;
+           drop.style.animationDuration = `${Math.random() * 1 + 2}s, ${Math.random() * 5 + 2}s`; // Adicionei um tempo de duração para a animação de mudança de cor
+           drop.style.animationDelay = `${Math.random() * 2}s`;
+           document.body.appendChild(drop);
+       }
+   </script>
+ 
+</body>
+</html>
